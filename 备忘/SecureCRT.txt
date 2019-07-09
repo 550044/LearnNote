@@ -1,0 +1,1 @@
+[rxsg2@rxsg2_center_122.112.242.10 /rxsg2/gm]$ php sync_merge_server.php //合服后要执行的脚本
