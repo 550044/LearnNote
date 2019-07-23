@@ -1,0 +1,21 @@
+同步步骤
+
+trunk->OL_BUFFER	(只同步自己负责的部分内容，需要在trunk上经过测试)
+1、server（compare）
+2、client（compare）
+3、dat（compare）
+4、ui(compare)
+5、patch(直接打到数据库)
+6、提交代码（svn）
+7、release_deploy.bat
+8、deploy_all.sh 版本号
+9、swf(ftp)		// release_swf内的文件
+10、更新数据(dat) 	// 文档系统->测试地址->OL_Buffer->更新数据
+11、清缓存		// 测试的浏览器
+
+OL_BUFFER->T3
+1、export_bin.sh 版本号
+2、export_dat.sh 版本号
+3、export_swf.sh 版本号
+4、res 				// 从svn中export -> OL/deploy/
+5、patch(ftp)			// UTF8无签名

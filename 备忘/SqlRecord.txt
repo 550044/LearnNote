@@ -1,0 +1,53 @@
+REPLACE INTO `cfg_lang_client` ( `name`, `cn`) VALUES ( 'USE_GOODS_NUM_NOT_ENOUGH', '当前的道具数量不够,确认需要购买吗?');
+REPLACE INTO `cfg_lang_client` ( `name`, `cn`) VALUES ( 'USE_GOODS_NUM_REJECT', '请输入合适的道具使用数量');
+REPLACE INTO `cfg_lang_server` ( `name`, `cn`) VALUES ( 'HERO_FLOOR_NOT_ENOUGH', '挑战当前层等级不足,需要{level}级');
+
+UPDATE `cfg_epic_max` SET day_need=3 WHERE stage=1;
+UPDATE `cfg_epic_max` SET day_need=4 WHERE stage=2;
+UPDATE `cfg_epic_max` SET day_need=5 WHERE stage=3;
+UPDATE `cfg_epic_max` SET day_need=7 WHERE stage=4;
+
+REPLACE INTO `cfg_lang_server` ( `name`, `cn`) VALUES ( 'LEVEL_NOT_ENOUGHT_TO_USE_GOODS', '您当前的等级不足以使用该物品。');
+
+-- UserDataMonitor系统关闭
+DROP TABLE mem_user_data_monitor;
+
+-- 聚魂珠加成属性带入群雄逐鹿  在test数据库中
+DROP TABLE IF EXISTS `mem_soul_gem`;
+CREATE TABLE `mem_soul_gem` (
+  `sgid` bigint(20) NOT NULL auto_increment,
+  `uid` bigint(20) NOT NULL,
+  `uaid` bigint(20) NOT NULL,
+  `hid` bigint(20) NOT NULL,
+  `level` int(11) NOT NULL,
+  PRIMARY KEY  (`sgid`)
+) ENGINE=MyISAM AUTO_INCREMENT=104 DEFAULT CHARSET=utf8;
+
+-- 印鉴系统的数据库表->test数据库
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for log_seal_stage
+-- ----------------------------
+DROP TABLE IF EXISTS `log_seal_stage`;
+CREATE TABLE `log_seal_stage` (
+  `hid` bigint(20) NOT NULL,
+  `uid` bigint(20) NOT NULL,
+  `new_stage` int(11) NOT NULL,
+  `time` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for mem_hero_seal
+-- ----------------------------
+DROP TABLE IF EXISTS `mem_hero_seal`;
+CREATE TABLE `mem_hero_seal` (
+  `hid` bigint(20) NOT NULL,
+  `seal_stage` int(11) NOT NULL,
+  `seal_level` int(11) NOT NULL,
+  `level_add_times` int(11) NOT NULL,
+  PRIMARY KEY  (`hid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
