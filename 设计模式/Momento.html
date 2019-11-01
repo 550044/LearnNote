@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=UTF-8">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc0">/**状态的保存形式*/
+class Momento
+{
+    std::string state;//状态的存储形式和存储内容可灵活选择
+public:
+    Momento(const std::string&amp; s) :state(s)
+    {
+    }
+    std::string GetState() const
+    {
+        return state;
+    }
+    void SetState(const std::string&amp; s)
+    {
+        state = s;
+    }
+};
+
+/**需要保存状态的对象*/
+class Originator
+{
+    std::string state;
+public:
+    Momento CreateMomento()
+    {
+        Momento m(state);
+        return m;
+    }
+    void SetMomento(const Momento&amp; m)
+    {
+        state = m.GetState();
+    }
+};
+
+int main()
+{
+    Originator originator;
+    //snapshot
+    Momento mem = originator.CreateMomento();
+    //change state of originator
+    //then recover
+    originator.SetMomento(mem);
+}</span></div></body>
+</html>

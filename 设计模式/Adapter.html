@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=UTF-8">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	color: #008000;
+}
+.sc4 {
+	color: #FF8000;
+}
+.sc10 {
+	font-weight: bold;
+	color: #000080;
+}
+.sc11 {
+}
+.sc16 {
+	color: #8000FF;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc1">/*
+  适配器模式(Adapter)
+  1、旧的接口与新的接口有内在的关联性，新接口可以看成是对外的另外一种表现形式
+  2、新接口的实现可以复合多个旧接口
+  3、Adapter继承新接口，表明对外规范一致。组合旧接口，表明内部关联性的实现依赖。
+*/</span><span class="sc0">
+
+</span><span class="sc2">//新的需求接口
+</span><span class="sc16">class</span><span class="sc0"> </span><span class="sc11">ITarget</span><span class="sc0">
+</span><span class="sc10">{</span><span class="sc0">
+</span><span class="sc16">public</span><span class="sc10">:</span><span class="sc0">
+   </span><span class="sc16">virtual</span><span class="sc0"> </span><span class="sc16">void</span><span class="sc0"> </span><span class="sc11">process</span><span class="sc10">()=</span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">    
+</span><span class="sc10">};</span><span class="sc0">
+
+</span><span class="sc2">//已有的旧接口
+</span><span class="sc16">class</span><span class="sc0"> </span><span class="sc11">IAdaptee</span><span class="sc0">
+</span><span class="sc10">{</span><span class="sc0">
+</span><span class="sc16">public</span><span class="sc10">:</span><span class="sc0">
+   </span><span class="sc16">virtual</span><span class="sc0"> </span><span class="sc16">void</span><span class="sc0"> </span><span class="sc11">oldProcess</span><span class="sc10">()=</span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+   </span><span class="sc16">virtual</span><span class="sc0"> </span><span class="sc16">void</span><span class="sc0"> </span><span class="sc11">otherFunc</span><span class="sc10">(</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">param</span><span class="sc10">)=</span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">};</span><span class="sc0">
+</span><span class="sc2">//已有的另一个旧接口
+</span><span class="sc16">class</span><span class="sc0"> </span><span class="sc11">IAnoAdaptee</span><span class="sc0">
+</span><span class="sc10">{</span><span class="sc0">
+</span><span class="sc16">public</span><span class="sc10">:</span><span class="sc0">
+   </span><span class="sc16">virtual</span><span class="sc0"> </span><span class="sc16">void</span><span class="sc0"> </span><span class="sc11">oldProcess2</span><span class="sc10">()=</span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+   </span><span class="sc16">virtual</span><span class="sc0"> </span><span class="sc16">void</span><span class="sc0"> </span><span class="sc11">otherFunc2</span><span class="sc10">(</span><span class="sc11">string</span><span class="sc0"> </span><span class="sc11">param</span><span class="sc10">)=</span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">};</span><span class="sc0">
+
+</span><span class="sc2">//实现新的接口，表明具有新接口的规范，但内部组合旧的接口进行实现
+</span><span class="sc16">class</span><span class="sc0"> </span><span class="sc11">IAdapter</span><span class="sc10">:</span><span class="sc16">public</span><span class="sc0"> </span><span class="sc11">ITarget</span><span class="sc0">
+</span><span class="sc10">{</span><span class="sc0">
+</span><span class="sc16">public</span><span class="sc10">:</span><span class="sc0">
+    </span><span class="sc16">virtual</span><span class="sc0"> </span><span class="sc16">void</span><span class="sc0"> </span><span class="sc11">process</span><span class="sc10">()</span><span class="sc0">
+    </span><span class="sc10">{</span><span class="sc0"> 
+      </span><span class="sc2">//usage of m_Adaptee and m_AnoAdaptee
+</span><span class="sc0">    </span><span class="sc10">}</span><span class="sc0">
+</span><span class="sc16">protected</span><span class="sc10">:</span><span class="sc2">//这里是复用旧的功能，采用组合的形式。也可以使用其他形式，如参数、多继承等
+</span><span class="sc0">     </span><span class="sc11">IAdaptee</span><span class="sc10">*</span><span class="sc0"> </span><span class="sc11">m_Adaptee</span><span class="sc10">;</span><span class="sc0">
+     </span><span class="sc11">IAnoAdaptee</span><span class="sc10">*</span><span class="sc0"> </span><span class="sc11">m_AnoAdaptee</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">};</span></div></body>
+</html>

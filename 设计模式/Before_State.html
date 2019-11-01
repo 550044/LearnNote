@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=UTF-8">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc0">enum  NetWorkState
+{
+    NETWORK_OPEN,
+    NETWORK_CLOSE,
+    NETWORK_CONNECT
+};
+
+class NetWorkProcessor
+{
+    NetWorkState state;
+public:
+    void Option1()
+    {
+        switch(state)
+        {
+        case NETWORK_OPEN:
+            //do something...
+            state = NetWorkState::NETWORK_CONNECT;
+            break;
+        case NETWORK_CLOSE:
+            //do something...
+            state = NetWorkState::NETWORK_OPEN;
+            break;
+        case NETWORK_CONNECT:
+            //do something...
+            state = NetWorkState::NETWORK_CLOSE;
+            break;
+        default:
+            break;
+        }
+    }
+
+    void Option2()
+    {
+        switch(state)
+        {
+        case NETWORK_OPEN:
+            //do something...
+            state = NetWorkState::NETWORK_CONNECT;
+            break;
+        case NETWORK_CLOSE:
+            //do something...
+            state = NetWorkState::NETWORK_OPEN;
+            break;
+        case NETWORK_CONNECT:
+            //do something...
+            state = NetWorkState::NETWORK_CLOSE;
+            break;
+        default:
+            break;
+        }
+    }
+};
+/**
+*旧式方法缺陷:新增NetWorkState时违反开闭原则，状态的变换和状态的操作耦合
+*/</span></div></body>
+</html>
